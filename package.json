@@ -1,0 +1,28 @@
+{
+  "name": "p3e",
+  "description": "Polymer 3 in an electron application",
+  "repository": "git@github.com:visa4/thor.git",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "devtron": "^1.4.0",
+    "electron": "4.0.5",
+    "electron-builder": "~20.11.1",
+    "polymer-cli": "^1.6.0",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.0"
+  },
+  "scripts": {
+    "start": "electron ./build/es6bundle/app/main.js --inspect=5858 --enable-logging",
+    "build": "./node_modules/.bin/polymer build",
+    "test": "./node_modules/.bin/polymer test"
+  },
+  "dependencies": {
+    "@polymer/polymer": "^3.1.0",
+    "@polymer/app-layout": "^3.0.2"
+  },
+  "keywords": [
+    "polymer 3",
+    "electron",
+    "starter kit polymer 3"
+  ]
+}

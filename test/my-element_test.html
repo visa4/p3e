@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>p3e test</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+
+    <script type="module" src="../app/elements/my-element/my-element.js"></script>
+  </head>
+  <body>
+
+    <test-fixture id="Init">
+      <template>
+        <my-element></my-element>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="ChangedProperty">
+      <template>
+        <my-element prop1="new-prop1"></my-element>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('my-element-test-suite', function() {
+
+        test('init', function() {
+          var element = fixture('Init');
+          assert.equal(element.prop1, 'Good component');
+        });
+
+        test('change property', function() {
+          // Create a test fixture
+          var element = fixture('ChangedProperty');
+          assert.equal(element.prop1, 'new-prop1');
+        });
+
+      });
+    </script>
+  </body>
+</html>
