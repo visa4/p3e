@@ -4,18 +4,19 @@ P3E is a starter kit to start an electron project with [Polymer 3 ](https://poly
 
 ## Install
 
-For install the project is require [Npm](https://www.npmjs.com/get-npm), after install it run the command:
+[Npm](https://www.npmjs.com/get-npm) is required to install the project, once the repository has been cloned run:
 ```bash
 npm install
 ```
 
-## Build for develoment
+## Development build
+Before launching the project it needs to be built, run this command:
 ```bash
 npm run build
 ```
-Now in you build folder you can find the application build.
+and after that Electron can be launched to run the project.
 
-## Run for develoment
+## Run
 ```bash
 npm start
 ```
