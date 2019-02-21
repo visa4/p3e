@@ -8,7 +8,8 @@
   },
   "sources": [
     "app/**.js",
-    "app/manifest.json"
+    "app/manifest.json",
+    "package.json"
   ],
   "builds": [
     {

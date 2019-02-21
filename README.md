@@ -9,10 +9,10 @@ P3E is a starter kit to start an electron project with [Polymer 3 ](https://poly
 npm install
 ```
 
-## Development build
+## Development Build
 Before launching the project it needs to be built, run this command:
 ```bash
-npm run build
+npm run build-polymer
 ```
 and after that Electron can be launched to run the project.
 
@@ -21,7 +21,13 @@ and after that Electron can be launched to run the project.
 npm start
 ```
 
-## Run test
+## Run Test
 ```bash
 npm run test
+```
+
+## Build Electron Bundle
+```bash
+cd build/es6bundle/app
+./../../../node_modules/.bin/electron-builder -c.extraMetadata.main=main.js -w --x64
 ```

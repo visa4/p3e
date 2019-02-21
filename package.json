@@ -1,4 +1,5 @@
 {
+  "version": "0.1.0",
   "name": "p3e",
   "description": "Polymer 3 in an electron application",
   "repository": "git@github.com:visa4/thor.git",
@@ -13,12 +14,33 @@
   },
   "scripts": {
     "start": "electron ./build/es6bundle/app/main.js --inspect=5858 --enable-logging",
-    "build": "./node_modules/.bin/polymer build",
+    "build-polymer": "./node_modules/.bin/polymer build",
+    "postbuild-polymer": "mv build/es6bundle/package.json build/es6bundle/app",
     "test": "./node_modules/.bin/polymer test"
   },
   "dependencies": {
     "@polymer/polymer": "^3.1.0",
     "@polymer/app-layout": "^3.0.2"
+  },
+  "build": {
+    "appId": "p3e.app",
+    "files": [
+      "index.html",
+      "main.js",
+      "elements/**/*",
+      "manifest.json",
+      {
+        "from": "../node_modules",
+        "to": "../node_modules"
+      }
+    ],
+    "directories": {
+      "output": "../../../releases"
+    },
+    "win": {
+      "legalTrademarks": "P3E",
+      "asar": false
+    }
   },
   "keywords": [
     "polymer 3",
