@@ -32,6 +32,7 @@
     "files": [
       "index.html",
       "main.js",
+      "configle /**/*",
       "elements/**/*",
       "manifest.json",
       {
