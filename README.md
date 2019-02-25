@@ -9,13 +9,6 @@ P3E is a starter kit to start an electron project with [Polymer 3 ](https://poly
 npm install
 ```
 
-## Development Build
-Before launching the project it needs to be built, run this command:
-```bash
-npm run build-polymer
-```
-and after that Electron can be launched to run the project.
-
 ## Run
 ```bash
 npm start
@@ -27,6 +20,13 @@ npm run test
 ```
 
 ## Build Electron Bundle
+To bundle the application you first need to modify the app/config/config.json file to set the env to prod, then the application MUST BE built with polymer-cli, run this command:
+```bash
+npm run build-polymer
+```
+
+Once the build process has finished, the build folder will be created, then the application can be packaged with the following command:
+
 ```bash
 cd build/es6bundle/app
 ./../../../node_modules/.bin/electron-builder -c.extraMetadata.main=main.js -w --x64

@@ -5,26 +5,30 @@
   "repository": "git@github.com:visa4/thor.git",
   "license": "BSD-3-Clause",
   "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "babel-core": "^6.26.3",
     "devtron": "^1.4.0",
     "electron": "4.0.5",
     "electron-builder": "~20.11.1",
     "polymer-cli": "^1.6.0",
-    "@webcomponents/webcomponentsjs": "^2.0.0",
     "wct-browser-legacy": "^1.0.0"
   },
   "scripts": {
-    "start": "electron ./build/es6bundle/app/main.js --inspect=5858 --enable-logging",
+    "start": "electron ./app/main.js --inspect=5858",
     "build-polymer": "./node_modules/.bin/polymer build",
     "postbuild-polymer": "mv build/es6bundle/package.json build/es6bundle/app",
     "test": "./node_modules/.bin/polymer test"
   },
   "dependencies": {
+    "@polymer/app-layout": "^3.0.2",
     "@polymer/polymer": "^3.1.0",
-    "@polymer/app-layout": "^3.0.2"
+    "@webcomponents/webcomponentsjs": "^2.0.0"
   },
   "build": {
     "appId": "p3e.app",
-    "npmRebuild" : false,
+    "npmRebuild": false,
     "files": [
       "index.html",
       "main.js",
