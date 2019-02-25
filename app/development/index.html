@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polymer 3 and electron</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script>
+        require('@babel/register')({
+            presets: ['@babel/preset-env'],
+            ignore: []
+        });
+        require('./import.js')
+    </script>
+    <custom-style>
+        <style is="custom-style">
+
+            body {
+                margin: 0;
+                font-family: 'Roboto', 'Noto', sans-serif;
+                background-color: #eee;
+            }
+        </style>
+    </custom-style>
+</head>
+<body>
+    <p3e-layout></p3e-layout>
+</body>
+</html>

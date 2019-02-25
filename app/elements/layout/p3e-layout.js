@@ -8,7 +8,8 @@ import '../my-element/my-element.js';
  * @customElement
  * @polymer
  */
-class AppLayout extends PolymerElement {
+class P3ELayout extends PolymerElement {
+
     static get template() {
         return html`
       <style>
@@ -31,4 +32,4 @@ class AppLayout extends PolymerElement {
     }
 }
 
-window.customElements.define('app-layout', AppLayout);
+window.customElements.define('p3e-layout', P3ELayout);
