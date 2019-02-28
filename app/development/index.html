@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Polymer 3 and electron</title>
     <link rel="manifest" href="../manifest.json">
     <script src="../../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script>
@@ -12,18 +11,29 @@
         });
         require('./import.js')
     </script>
-    <custom-style>
-        <style is="custom-style">
-
-            body {
-                margin: 0;
-                font-family: 'Roboto', 'Noto', sans-serif;
-                background-color: #eee;
-            }
-        </style>
-    </custom-style>
 </head>
 <body>
-    <p3e-layout></p3e-layout>
+    <p3e-layout>
+        <app-header-layout fullbleed>
+            <app-header reveals>
+                <app-toolbar>
+                    <div main-title>P3E</div>
+                    <paper-icon-button id="buttonDrawer" icon="icons:account-circle"></paper-icon-button>
+                </app-toolbar>
+            </app-header>
+            <div class="layout-container layout-horizontal">
+                <div class="layout-vertical layout-center-aligned layout-menu">
+                    <paper-icon-button icon="icons:apps"></paper-icon-button>
+                    <paper-icon-button icon="icons:grade"></paper-icon-button>
+                </div>
+                <div class="layout-vertical layout-flex-auto layout-content">
+                    content
+                </div>
+            </div>
+        </app-header-layout>
+        <app-drawer id="settingDrawer" align="right" swipe-open>
+            setting-drawer
+        </app-drawer>
+    </p3e-layout>
 </body>
 </html>

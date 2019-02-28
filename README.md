@@ -29,6 +29,11 @@ npm run build-polymer
 Once the build process has finished, the build folder will be created, then the application can be packaged with the following command:
 
 ```bash
-cd build/es6bundle/app
-./../../../node_modules/.bin/electron-builder -c.extraMetadata.main=main.js -w --x64
+npm run dist
+```
+
+you can also run the pre build bundle:
+
+```bash
+npm run start-pre-build
 ```

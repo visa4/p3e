@@ -9,22 +9,53 @@ const fs    = require('fs');
 class Application {
 
     /**
-     * @return {string}
+     * @param {Object} options
      */
-    static get PATH_CONFIG() {
-        return path.join(__dirname, '/config/config.json');
-    };
+    constructor(options) {
 
-    constructor() {
-
+        /**
+         *
+         */
         this.browserWindow = null;
+
+        /**
+         * @type {String}
+         */
+        this.environment = options.env ? options.env : 'production';
 
         /**
          * @type {Object}
          */
         this.config = JSON.parse(
-            fs.readFileSync(Application.PATH_CONFIG, {'encoding': 'UTF8'})
+            fs.readFileSync(
+                this._getPathConfig(),
+                {'encoding': 'UTF8'}
+            )
         );
+    }
+
+    /**
+     * @return {string}
+     * @private
+     */
+    _getPathConfig() {
+        return path.join(__dirname, `/config/config-${this.environment}.json`);
+    }
+
+    /**
+     * @private
+     */
+    _getEntryPoint() {
+        let entryPoint = '';
+        switch (this.environment) {
+            case 'development':
+                entryPoint =  'development/index.html';
+                break;
+            default:
+                entryPoint =  'index.html';
+                break;
+        }
+        return entryPoint;
     }
 
     /**
@@ -44,18 +75,19 @@ class Application {
             webPreferences: {
                 nodeIntegration: true,
             },
+            titleBarStyle: 'hidden',
+            autoHideMenuBar: true,
+            icon: path.join(__dirname, 'style/icon/polymer-logo.png'),
+            title : `P3E`,
             width: 500,
             height: 500
         });
 
-        let entryPoint = 'index.html'
         if(this.config.env === 'development') {
-
-            this.browserWindow .webContents.openDevTools();
-            entryPoint = 'development/index.html';
+            this.browserWindow.webContents.openDevTools();
         }
-
-        this.browserWindow .loadURL(`file://${__dirname}/${entryPoint}`);
+console.log(`file://${__dirname}/${this._getEntryPoint()}`, this.environment);
+        this.browserWindow .loadURL(`file://${__dirname}/${this._getEntryPoint()}`);
 
         /**
          * On close browser window
@@ -66,7 +98,14 @@ class Application {
     }
 }
 
-let application = new Application();
+/**
+ * Application options
+ */
+let options  = {
+    env : process.env.APP_ENVIRONMENT ? process.env.APP_ENVIRONMENT : 'production'
+};
+
+let application = new Application(options);
 
 /**
  * Electron ready

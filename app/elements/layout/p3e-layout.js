@@ -2,7 +2,8 @@ import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/app-layout/app-header-layout/app-header-layout.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 import '@polymer/app-layout/app-header/app-header.js'
-import '../my-element/my-element.js';
+import '@polymer/app-layout/app-drawer/app-drawer.js'
+import '@polymer/paper-icon-button/paper-icon-button.js'
 
 /**
  * @customElement
@@ -12,23 +13,36 @@ class P3ELayout extends PolymerElement {
 
     static get template() {
         return html`
-      <style>
-        :host {
-          display: block;
+             <slot></slot>
+        `;
+    }
+
+    ready() {
+        super.ready();
+
+        this.shadowRoot.querySelector('slot').addEventListener('slotchange', e => this._handleSlotChange(e));
+    }
+
+    /**
+     * @param evt
+     * @private
+     */
+    _handleSlotChange(evt) {
+        let button = this.querySelector('#buttonDrawer');
+        if (button && !button.onclick) {
+            button.onclick = this._tapDrawer.bind(this);
         }
-              
-        app-header {
-          background-color: #4285f4;
-          color: #fff;
+    }
+
+    /**
+     * @param evt
+     * @private
+     */
+    _tapDrawer(evt) {
+        let drawer = this.querySelector('#settingDrawer');
+        if (drawer) {
+            drawer.open()
         }
-      </style>
-      <app-header-layout>
-        <app-header slot="header" fixed condenses effects="waterfall">
-            <app-toolbar>Polymer 3</app-toolbar>
-        </app-header>
-            <my-element></my-element>
-        </app-header-layout>
-    `;
     }
 }
 

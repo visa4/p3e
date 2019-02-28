@@ -16,13 +16,17 @@
     "wct-browser-legacy": "^1.0.0"
   },
   "scripts": {
-    "start": "electron ./app/main.js --inspect=5858",
-    "build-polymer": "./node_modules/.bin/polymer build",
+    "start": "export APP_ENVIRONMENT=development && electron ./app/main.js --inspect=5858",
+    "build-polymer": "polymer build",
     "postbuild-polymer": "mv build/es6bundle/package.json build/es6bundle/app",
-    "test": "./node_modules/.bin/polymer test"
+    "start-pre-build": "electron ./build/es6bundle/app/main.js --inspect=5858",
+    "test": "polymer test",
+    "dist": "cd build/es6bundle/app && electron-builder -c.extraMetadata.main=main.js -w --x64"
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.2",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/polymer": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.0.0"
   },
@@ -32,7 +36,8 @@
     "files": [
       "index.html",
       "main.js",
-      "configle /**/*",
+      "config/**/*",
+      "style/**/*",
       "elements/**/*",
       "manifest.json",
       {
