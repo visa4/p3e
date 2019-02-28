@@ -83,10 +83,10 @@ class Application {
             height: 500
         });
 
-        if(this.config.env === 'development') {
+        if(this.environment === 'development') {
             this.browserWindow.webContents.openDevTools();
         }
-console.log(`file://${__dirname}/${this._getEntryPoint()}`, this.environment);
+
         this.browserWindow .loadURL(`file://${__dirname}/${this._getEntryPoint()}`);
 
         /**
