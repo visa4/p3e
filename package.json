@@ -8,7 +8,6 @@
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
-    "babel-core": "^6.26.3",
     "devtron": "^1.4.0",
     "electron": "4.0.5",
     "electron-builder": "~20.11.1",
@@ -16,6 +15,7 @@
     "wct-browser-legacy": "^1.0.0"
   },
   "scripts": {
+    "postinstall": "cp app/config/config.json.dist app/config/config-development.json && cp app/config/config.json.dist app/config/config-production.json",
     "start": "export APP_ENVIRONMENT=development && electron ./app/main.js --inspect=5858",
     "build-polymer": "polymer build",
     "postbuild-polymer": "mv build/es6bundle/package.json build/es6bundle/app",

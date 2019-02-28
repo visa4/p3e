@@ -11,7 +11,6 @@ npm install
 
 ## Run
 ```bash
-cp app/config/config.json.dist app/config/config.json
 npm start
 ```
 
