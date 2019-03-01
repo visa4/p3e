@@ -74,13 +74,15 @@ class Application {
         this.browserWindow = new BrowserWindow({
             webPreferences: {
                 nodeIntegration: true,
+                allowRunningInsecureContent: false,
+                experimentalFeatures: true,
             },
             titleBarStyle: 'hidden',
             autoHideMenuBar: true,
-            icon: path.join(__dirname, 'style/icon/polymer-logo.png'),
+            icon: path.join(__dirname, 'style/icon/logo.png'),
             title : `P3E`,
             width: 500,
-            height: 500
+            height: 1200
         });
 
         if(this.environment === 'development') {

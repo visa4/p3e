@@ -19,19 +19,6 @@ class P3ELayout extends PolymerElement {
 
     ready() {
         super.ready();
-
-        this.shadowRoot.querySelector('slot').addEventListener('slotchange', e => this._handleSlotChange(e));
-    }
-
-    /**
-     * @param evt
-     * @private
-     */
-    _handleSlotChange(evt) {
-        let button = this.querySelector('#buttonDrawer');
-        if (button && !button.onclick) {
-            button.onclick = this._tapDrawer.bind(this);
-        }
     }
 
     /**

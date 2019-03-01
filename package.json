@@ -1,8 +1,9 @@
 {
   "version": "0.1.0",
+  "author": "antonino.visalli@gmail.com",
   "name": "p3e",
   "description": "Polymer 3 in an electron application",
-  "repository": "git@github.com:visa4/thor.git",
+  "repository": "git@github.com:visa4/p3e.git",
   "license": "BSD-3-Clause",
   "devDependencies": {
     "@babel/core": "^7.3.3",
@@ -16,9 +17,9 @@
   },
   "scripts": {
     "postinstall": "cp app/config/config.json.dist app/config/config-development.json && cp app/config/config.json.dist app/config/config-production.json",
-    "start": "export APP_ENVIRONMENT=development && electron ./app/main.js --inspect=5858",
+    "start": "export APP_ENVIRONMENT=development && export ELECTRON_DISABLE_SECURITY_WARNINGS=true && electron ./app/main.js --inspect=5858",
     "build-polymer": "polymer build",
-    "postbuild-polymer": "mv build/es6bundle/package.json build/es6bundle/app",
+    "postbuild-polymer": "mv build/es6bundle/package.json build/es6bundle/app && cp app/style/icon/logo.png build/es6bundle/app/icon.png",
     "start-pre-build": "electron ./build/es6bundle/app/main.js --inspect=5858",
     "test": "polymer test",
     "dist": "cd build/es6bundle/app && electron-builder -c.extraMetadata.main=main.js -w --x64"
@@ -26,9 +27,22 @@
   "dependencies": {
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-icons": "^3.0.1",
+    "@polymer/paper-badge": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-card": "^3.0.1",
+    "@polymer/paper-dropdown-menu": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.2",
+    "@polymer/paper-item": "^3.0.1",
+    "@polymer/paper-listbox": "^3.0.1",
+    "@polymer/paper-menu-button": "^3.0.1",
+    "@polymer/paper-progress": "^3.0.1",
+    "@polymer/paper-spinner": "^3.0.2",
+    "@polymer/paper-swatch-picker": "^3.0.1",
+    "@polymer/paper-tabs": "^3.0.1",
+    "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.1.0",
-    "@webcomponents/webcomponentsjs": "^2.0.0"
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "web-animations-js": "^2.3.1"
   },
   "build": {
     "appId": "p3e.app",
@@ -36,6 +50,7 @@
     "files": [
       "index.html",
       "main.js",
+      "icon.png",
       "config/**/*",
       "style/**/*",
       "elements/**/*",
@@ -49,6 +64,7 @@
       "output": "../../../releases"
     },
     "win": {
+      "icon" : "build/es6bundle/app/style/icon/polymer-logo.ico",
       "legalTrademarks": "P3E",
       "asar": false
     }

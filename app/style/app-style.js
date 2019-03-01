@@ -5,8 +5,10 @@ import '@polymer/iron-flex-layout/iron-flex-layout';
 const template = html`
 <custom-style id="app-style">
     <style is="custom-style">
+    
+    
      :root {
-            /*
+            
             --dark-primary-color:       #E64A19;
             --default-primary-color:    #FF5722;
             --light-primary-color:      #FFCCBC;
@@ -27,9 +29,8 @@ const template = html`
     
             --paper-input-container-color:       rgba(255, 255, 255, 0.64);
             --paper-input-container-focus-color: rgba(255, 255, 255, 1);
-            --paper-input-container-input-color: #fff;
-            */
-            
+            --paper-input-container-input-color: #fff;--paper-button
+            /*          
             --dark-primary-color:       #5D4037;
             --default-primary-color:    #795548;
             --light-primary-color:      #D7CCC8;
@@ -48,16 +49,60 @@ const template = html`
             --paper-menu-background-color: #fff;
             --menu-link-color:             #111111;
 
-            --paper-input-container-color:       rgba(255, 255, 255, 0.64);
-            --paper-input-container-focus-color: rgba(255, 255, 255, 1);
-            --paper-input-container-input-color: #fff;
-            
+            --paper-input-container-color:       var(--primary-text-color);
+            --paper-input-container-focus-color: var(--secondary-text-color)
+            --paper-input-container-input-color: var(--primary-text-color);
+            */
+      
             --menu-width: 56px;
             --content-padding: 8px;
-        }
+            
+            /**********************************************************
+                            GLOBAL LAYOUT ELEMENTS
+            **********************************************************/
+            
+            --paper-badge : {}
+            
+            --paper-button : {
+                background: var(--accent-color);
+                background-color: var(--accent-color);
+                color: var(--text-primary-color);
+            };
+            
+            --paper-badge : {}
+            
+            --paper-card : {}
+            
+            --paper-dropdown-menu : {}
+                    
+            --paper-icon-button : {}        
+                        
+            --paper-item : {}
+            
+            --paper-menu-button : {}
+            
+            --paper-swatch-picker-icon : {}
+            
+            --paper-tabs : {
+                 background: var(--accent-color);
+                 background-color: var(--accent-color);
+                 color: var(--text-primary-color);
+            }
+            
+            --paper-toolbar : {
+                 background: var(--accent-color);
+                 background-color: var(--accent-color);
+                 color: var(--text-primary-color);
+            }
+            
+            --paper-tooltip : {}
+         }
 
+        /*******************************************
+                    LAYOUT STYLE
+        *******************************************/
         body, html {
-            height: 100%;
+            height: max-content;
         }
 
         body {
@@ -70,9 +115,10 @@ const template = html`
             background-color: var(--default-primary-color);
             color: var(--text-primary-color);
         }
+       
 
         /*******************************************
-                        Flex layout
+                    FLEX LAYOUT
          *******************************************/
 
         .layout {
@@ -111,14 +157,7 @@ const template = html`
         .layout-content {
             padding: var(--content-padding);
         }
-
-        .debug {
-            background-color: red;
-        }
-
-        .debug1 {
-            background-color: yellow;
-        }
+      
     </style>
 </custom-style>`;
 
