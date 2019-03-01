@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, protocol} = require('electron');
-const path  = require('path');
-const fs    = require('fs');
+const path = require('path');
+const fs = require('fs');
 
 /**
  * @type Application
@@ -39,7 +39,7 @@ class Application {
      * @private
      */
     _getPathConfig() {
-        return path.join(__dirname, `/config/config-${this.environment}.json`);
+        return path.join(__dirname, 'config', `config-${this.environment}.json`);
     }
 
     /**
@@ -49,10 +49,10 @@ class Application {
         let entryPoint = '';
         switch (this.environment) {
             case 'development':
-                entryPoint =  'development/index.html';
+                entryPoint = 'development/index.html';
                 break;
             default:
-                entryPoint =  'index.html';
+                entryPoint = 'index.html';
                 break;
         }
         return entryPoint;
@@ -74,22 +74,20 @@ class Application {
         this.browserWindow = new BrowserWindow({
             webPreferences: {
                 nodeIntegration: true,
-                allowRunningInsecureContent: false,
-                experimentalFeatures: true,
             },
             titleBarStyle: 'hidden',
             autoHideMenuBar: true,
-            icon: path.join(__dirname, 'style/icon/logo.png'),
-            title : `P3E`,
+            icon: path.join(__dirname, 'style/icon/polymer-logo.png'),
+            title: `P3E`,
             width: 500,
-            height: 1200
+            height: 500
         });
 
-        if(this.environment === 'development') {
+        if (this.environment === 'development') {
             this.browserWindow.webContents.openDevTools();
         }
 
-        this.browserWindow .loadURL(`file://${__dirname}/${this._getEntryPoint()}`);
+        this.browserWindow.loadURL(`file://${__dirname}/${this._getEntryPoint()}`);
 
         /**
          * On close browser window
@@ -103,8 +101,8 @@ class Application {
 /**
  * Application options
  */
-let options  = {
-    env : process.env.APP_ENVIRONMENT ? process.env.APP_ENVIRONMENT : 'production'
+let options = {
+    env: process.env.APP_ENVIRONMENT ? process.env.APP_ENVIRONMENT.trim() : 'production'
 };
 
 let application = new Application(options);
@@ -126,7 +124,7 @@ app.on('window-all-closed', () => {
     }
 });
 
-app.on('activate', ()  => {
+app.on('activate', () => {
     // On OS X it's common to re-create a window in the app when the dock icon is clicked and there are no other windows open.
     if (application.browserWindow === null) {
         application.run();

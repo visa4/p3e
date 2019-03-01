@@ -18,6 +18,7 @@
   "scripts": {
     "postinstall": "cp app/config/config.json.dist app/config/config-development.json && cp app/config/config.json.dist app/config/config-production.json",
     "start": "export APP_ENVIRONMENT=development && export ELECTRON_DISABLE_SECURITY_WARNINGS=true && electron ./app/main.js --inspect=5858",
+    "start-win": "set APP_ENVIRONMENT=development && electron .\\app\\main.js --inspect=5858",    
     "build-polymer": "polymer build",
     "postbuild-polymer": "mv build/es6bundle/package.json build/es6bundle/app && cp app/style/icon/logo.png build/es6bundle/app/icon.png",
     "start-pre-build": "electron ./build/es6bundle/app/main.js --inspect=5858",
@@ -64,7 +65,6 @@
       "output": "../../../releases"
     },
     "win": {
-      "icon" : "build/es6bundle/app/style/icon/polymer-logo.ico",
       "legalTrademarks": "P3E",
       "asar": false
     }
