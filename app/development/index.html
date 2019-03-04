@@ -34,13 +34,16 @@
                     </div>
                 </app-header-layout>
                 <app-drawer id="settingDrawer" align="right" swipe-open>
-                    setting-drawer
+                    <div class="avatar-image">
+                        <iron-icon icon="icons:account-circle"></iron-icon>
+                    </div>
+                    <div class="avatar-name">Mario rossi</div>
                 </app-drawer>
             </p3e-layout>
         </template>
     </dom-bind>
     <script>
-        var appBind = document.querySelector('dom-bind');
+        let appBind = document.querySelector('dom-bind');
         // set data property on dom-bind
         appBind._tapDrawer = () => {
             document.querySelector('#settingDrawer').open();

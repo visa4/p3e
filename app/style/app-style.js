@@ -27,9 +27,6 @@ const template = html`
             --paper-menu-background-color: #fff;
             --menu-link-color:             #111111;
     
-            --paper-input-container-color:       rgba(255, 255, 255, 0.64);
-            --paper-input-container-focus-color: rgba(255, 255, 255, 1);
-            --paper-input-container-input-color: #fff;--paper-button
             /*          
             --dark-primary-color:       #5D4037;
             --default-primary-color:    #795548;
@@ -48,11 +45,11 @@ const template = html`
 
             --paper-menu-background-color: #fff;
             --menu-link-color:             #111111;
-
+            */
+            
             --paper-input-container-color:       var(--primary-text-color);
             --paper-input-container-focus-color: var(--secondary-text-color)
             --paper-input-container-input-color: var(--primary-text-color);
-            */
       
             --menu-width: 56px;
             --content-padding: 8px;
@@ -96,6 +93,10 @@ const template = html`
             }
             
             --paper-tooltip : {}
+            
+            --paper-listbox: {}
+            
+            --paper-fab: {}
          }
 
         /*******************************************
@@ -114,6 +115,24 @@ const template = html`
         app-toolbar {
             background-color: var(--default-primary-color);
             color: var(--text-primary-color);
+        }
+        
+        app-drawer .avatar-image {
+            height: 256px;
+            padding: 0 8px;
+        }
+        
+        app-drawer .avatar-image iron-icon {
+            --iron-icon-width : 240px;
+            --iron-icon-height : 256px;
+        }
+        
+        app-drawer .avatar-name {
+            font-style: italic;
+            font-size: 20px;
+            padding: 0 8px;
+            text-align: center;
+            color: var(--secondary-text-color);
         }
        
 

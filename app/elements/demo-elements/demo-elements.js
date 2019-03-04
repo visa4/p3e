@@ -3,13 +3,22 @@ import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-badge/paper-badge';
 import '@polymer/paper-button/paper-button';
 import '@polymer/paper-card/paper-card';
+import '@polymer/paper-checkbox/paper-checkbox';
+import '@polymer/paper-dialog/paper-dialog';
 import '@polymer/paper-dropdown-menu/paper-dropdown-menu';
+import '@polymer/paper-fab/paper-fab';
+import '@polymer/paper-input/paper-input';
 import '@polymer/paper-item/paper-item';
 import '@polymer/paper-listbox/paper-listbox';
 import '@polymer/paper-progress/paper-progress';
+import '@polymer/paper-radio-button/paper-radio-button';
+import '@polymer/paper-radio-group/paper-radio-group';
+import '@polymer/paper-slider/paper-slider';
 import '@polymer/paper-spinner/paper-spinner';
 import '@polymer/paper-swatch-picker/paper-swatch-picker';
 import '@polymer/paper-tabs/paper-tabs'
+import '@polymer/paper-toast/paper-toast'
+import '@polymer/paper-toggle-button/paper-toggle-button'
 import '@polymer/paper-tooltip/paper-tooltip';
 
 import '@webcomponents/webcomponentsjs/';
@@ -19,6 +28,14 @@ import '@webcomponents/webcomponentsjs/';
  * @polymer
  */
 class DemoElements extends PolymerElement {
+
+    tapToast(evt) {
+        this.openToad = !this.openToad;
+    }
+
+    tapDialog() {
+        this.$.dialog.open();
+    }
 
     static get template() {
         return html`
@@ -57,7 +74,9 @@ class DemoElements extends PolymerElement {
                     margin-bottom: 8px;
                 }
                
-                paper-progress {
+                paper-progress,   
+                paper-slider,
+                paper-radio-button {
                     width: 100%;
                 }
                
@@ -80,7 +99,17 @@ class DemoElements extends PolymerElement {
                     border-radius: 50%;
                     background: orange;
                 }
-
+                
+                .paper-slider div {
+                    margin-top: 8px;
+                    margin-bottom: 8px;
+                }
+                
+                paper-dialog {
+                    height: 300px;
+                    width: 300px;
+                }
+                
             </style>
             <div class="container">
                 <div class="paper-badge" tabindex="0">
@@ -150,14 +179,64 @@ class DemoElements extends PolymerElement {
                         <paper-tab>paper tab 3</paper-tab>
                     </paper-tabs>
                 </div>
-                 <div class="paper-tabs section" tabindex="10">
-                    <paper-toolbar>
-                        <span slot="top" class="title">paper toolbar</span>
-                    </paper-toolbar>
-                </div>
-                <div class="paper-tooltip section" tabindex="11">
+                <div class="paper-tooltip section" tabindex="10">
                     <div id="id_4" tabindex="0"></div>
-                    <paper-tooltip for="id_4" offset="0">meow!</paper-tooltip>
+                    <paper-tooltip for="id_4" offset="0">paper tooltip</paper-tooltip>
+                </div>
+                <div class="paper-slider section" tabindex="11">
+                    <paper-slider pin value="20"></paper-slider>
+                     <div>paper slider</div>
+                    <paper-slider id="ratings" pin snaps max="10" max-markers="10" step="1" value="5"></paper-slider>
+                </div>
+                <div class="paper-input section" tabindex="12">
+                    <paper-input label="paper input"></paper-input>
+                </div>
+                <div class="paper-checkbox section" tabindex="13">
+                    <paper-checkbox>paper checkbox</paper-checkbox>
+                </div>
+                <div class="paper-listbox section" tabindex="14">
+                    <div>paper listbox</div>
+                    <paper-listbox selected="1">
+                      <paper-item>paper item 1</paper-item>
+                      <paper-item>paper item 2</paper-item>
+                    </paper-listbox>
+                </div>
+                <div class="paper-radio-button section" tabindex="15">
+                    <paper-radio-button>paper radio button 1</paper-radio-button>
+                    <paper-radio-button checked>paper radio button 2</paper-radio-button>
+                    <paper-radio-button disabled>paper radio button 3</paper-radio-button>
+                </div>
+                <div class="paper-radio-group section" tabindex="16">
+                    <div>paper radio group</div>
+                    <paper-radio-group selected="small">
+                      <paper-radio-button name="small">paper radio button 1</paper-radio-button>
+                      <paper-radio-button name="medium">paper radio button 2</paper-radio-button>
+                      <paper-radio-button name="large">paper radio button 2</paper-radio-button>
+                    </paper-radio-group>
+                </div>
+                <div class="paper-toggle-button section" tabindex="17">
+                    <paper-toggle-button class="green">paper toggle button</paper-toggle-button>
+                </div>
+                 <div class="paper-fab section" tabindex="18">
+                    <div>paper fab</div>
+                    <paper-fab  class="label" label="😻" title="heart eyes cat"></paper-fab>
+                </div>
+                <div class="paper-toast section" tabindex="19">
+                    <paper-button on-tap="tapToast">paper toast</paper-button>
+                    <paper-toast text="paper toast" opened="{{openToad}}"></paper-toast>
+                </div>
+                <div class="paper-dialog section" tabindex="20">
+                    <paper-button on-tap="tapDialog">paper dialog</paper-button>
+                    <paper-dialog id="dialog">
+                        <h2>paper dialog</h2>
+                        <paper-dialog-scrollable>
+                            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+                        </paper-dialog-scrollable>
+                        <div class="buttons">
+                            <paper-button dialog-dismiss>Cancel</paper-button>
+                            <paper-button dialog-confirm autofocus>Accept</paper-button>
+                        </div>
+                    </paper-dialog>
                 </div>
             </div>
         `;
