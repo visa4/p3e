@@ -1,5 +1,8 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 
+import '@polymer/app-media/app-media-devices';
+import '@polymer/app-media/app-media-video';
+import '@polymer/app-media/app-media-stream';
 import '@polymer/paper-badge/paper-badge';
 import '@polymer/paper-button/paper-button';
 import '@polymer/paper-card/paper-card';
@@ -237,6 +240,21 @@ class DemoElements extends PolymerElement {
                             <paper-button dialog-confirm autofocus>Accept</paper-button>
                         </div>
                     </paper-dialog>
+                </div>
+                 <div class="paper-media section">
+                    <app-media-devices
+                        kind="videoinput"
+                        selected-device="{{camera}}">
+                    </app-media-devices>
+                     <app-media-stream
+                        active
+                        video-device="[[camera]]"
+                        stream="{{cameraStream}}">
+                    </app-media-stream>
+                    <app-media-video
+                        source="[[cameraStream]]"
+                        autoplay>
+                    </app-media-video>
                 </div>
             </div>
         `;
