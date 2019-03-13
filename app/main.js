@@ -46,13 +46,10 @@ class Application {
      * @private
      */
     _getEntryPoint() {
-        let entryPoint = '';
+        let entryPoint = 'entrypoint/dashboard/index.html';
         switch (this.environment) {
             case 'development':
-                entryPoint = 'development/index.html';
-                break;
-            default:
-                entryPoint = 'index.html';
+                entryPoint = `development/${entryPoint}`;
                 break;
         }
         return entryPoint;
@@ -77,7 +74,7 @@ class Application {
             },
             titleBarStyle: 'hidden',
             autoHideMenuBar: true,
-            icon: path.join(__dirname, 'style/icon/polymer-logo.png'),
+            icon: path.join(__dirname, 'style/icon/logo.png'),
             title: `P3E`,
             width: 500,
             height: 1200

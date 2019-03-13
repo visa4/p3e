@@ -9,6 +9,7 @@
   "sources": [
     "app/elements/**.js",
     "app/style/**",
+    "app/entrypoint/**",
     "app/config/**",
     "!app/config/config.json.dist",
     "app/main.js",

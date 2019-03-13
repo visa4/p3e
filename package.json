@@ -9,10 +9,12 @@
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
+    "@types/source-map": "^0.5.2",
     "devtron": "^1.4.0",
     "electron": "4.0.5",
     "electron-builder": "~20.11.1",
     "polymer-cli": "^1.6.0",
+    "typescript": "^3.3.3333",
     "wct-browser-legacy": "^1.0.0"
   },
   "scripts": {
@@ -23,12 +25,15 @@
     "postbuild-polymer": "mv build/es6bundle/package.json build/es6bundle/app && cp app/style/icon/logo.png build/es6bundle/app/icon.png",
     "start-pre-build": "electron ./build/es6bundle/app/main.js --inspect=5858",
     "test": "polymer test",
-    "dist": "cd build/es6bundle/app && electron-builder -c.extraMetadata.main=main.js -w --x64"
+    "dist": "cd build/es6bundle/app && electron-builder -c.extraMetadata.main=main.js -w --x64",
+    "tsc-commonjs": "tsc  -p lib/commonjs",
+    "tsc-es6": "tsc  -p lib/es6"
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-media": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
+    "@polymer/iron-pages": "^3.0.1",
     "@polymer/paper-badge": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.1",
@@ -55,6 +60,7 @@
     "@polymer/polymer": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "image-capture": "^0.4.0",
+    "paper-collapse-item": "^4.0.5",
     "web-animations-js": "^2.3.1",
     "webrtc-adapter": "^7.2.1"
   },
