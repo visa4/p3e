@@ -8,10 +8,11 @@ process.env.APP_ENVIRONMENT = process.env.APP_ENVIRONMENT === undefined ? 'produ
 const fs = require('fs');
 const path = require('path');
 const back = process.env.APP_ENVIRONMENT === 'development' ? '/../../../' : '/../../';
+const slash = window.navigator.appVersion.indexOf('Win') != -1 ? '\\' : '/';
 
 const basePath = path.normalize(`${__dirname}${back}`);
-const modulePath = path.normalize(`${__dirname}/${back}module${back}`);
-const resourcePath = path.normalize(`${__dirname}${back}storage${back}`);
+const modulePath = path.normalize(`${__dirname}${back}module${slash}`);
+const resourcePath = path.normalize(`${__dirname}${back}storage${slash}`);
 process.env.APP_ENVIRONMENT = process.env.APP_ENVIRONMENT === undefined ? 'production' : process.env.APP_ENVIRONMENT;
 
 /**
@@ -22,7 +23,7 @@ process.env.APP_ENVIRONMENT = process.env.APP_ENVIRONMENT === undefined ? 'produ
 const container = new Container();
 
 const config =  JSON.parse(
-    fs.readFileSync(`${basePath}/config/config-${process.env.APP_ENVIRONMENT}.json`).toString()
+    fs.readFileSync(`${basePath}config${slash}config-${process.env.APP_ENVIRONMENT}.json`).toString()
 );
 /***********************************************************************************************************************
                                                CONFIG SERVICE
@@ -40,7 +41,7 @@ container.set('Localize', new Localize(
 /***********************************************************************************************************************
                                             APPLICATION SERVICE
  **********************************************************************************************************************/
-let modules = JSON.parse(fs.readFileSync(`${basePath}/config/module.json`).toString());
+let modules = JSON.parse(fs.readFileSync(`${basePath}config${slash}module.json`).toString());
 // TODO refactor after the introduction of the hydrator module
 let modulesHydrate = [];
 for (let cont = 0; modules.length > cont; cont++) {
@@ -51,7 +52,7 @@ for (let cont = 0; modules.length > cont; cont++) {
     modulesHydrate.push(module);
 }
 
-const application = new Application(modulesHydrate, basePath, modulePath, window.navigator.appVersion.indexOf('Win') != -1 ? '\\' : '/');
+const application = new Application(modulesHydrate, basePath, modulePath, slash);
 
 application.setResourcePath(resourcePath);
 
