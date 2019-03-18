@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "esnext",
     "target": "es6",
+    "declaration": false,
     "outDir": ".",
     "rootDir" : "../src"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "../src./*/**/index*"
   ],
   "include": [
     "../src/**/*"

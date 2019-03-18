@@ -2,12 +2,11 @@ import {ContainerInterface, ContainerAwareInterface} from "../container/index";
 import {Module} from "./Module";
 import {EventManagerAwareInterface, EventManagerInterface} from "../event/index";
 import {EventManager} from "../event/EventManager";
-import {Container} from "../container/Container";
 
 /**
  *  Application
  */
-export class Application implements EventManagerAwareInterface, ContainerAwareInterface {
+export class Application implements EventManagerAwareInterface {
 
     /**
      * @type {string}
@@ -30,6 +29,16 @@ export class Application implements EventManagerAwareInterface, ContainerAwareIn
     private resourcePath: string;
 
     /**
+     * @type {string}
+     */
+    private modulePath: string;
+
+    /**
+     * @type {string}
+     */
+    private slash: string;
+
+    /**
      * @type {Array<Module>}
      */
     private modules: Array<Module>;
@@ -40,35 +49,72 @@ export class Application implements EventManagerAwareInterface, ContainerAwareIn
     private eventManager:EventManagerInterface = new EventManager();
 
     /**
-     * @type {Container}
-     */
-    private container: ContainerInterface = new Container();
-
-    /**
      * @param {Array<Module>} modules
+     * @param {string} basePath
+     * @param {string} modulePath
+     * @param {string} slash
      */
-    constructor(modules:Array<Module>) {
+    constructor(modules:Array<Module>, basePath:string, modulePath:string, slash:string) {
 
         /**
-         * Load module
+         * @type {string}
          */
-        this.loadModules(modules);
-    }
+        this.basePath = basePath;
 
-    /**
-     * @param {Array<Module>} modules
-     */
-    private loadModules(modules:Array<Module>) {
-        console.log('Modules', modules);
+        /**
+         * @type {string}
+         */
+        this.modulePath = modulePath;
+
+        /**
+         * @type {string}
+         */
+        this.slash = slash;
+
+        /**
+         * @type {Array<Module>}
+         */
         this.modules = modules;
+
+        /**
+         * Load modules
+         */
+        for (let cont = 0; this.modules.length > cont; cont++) {
+            this.loadModule(this.modules[cont])
+        }
         this.getEventManager().emit(Application.BOOTSTRAP_MODULE, this.modules);
     }
 
     /**
-     * @return ContainerInterface
+     * @param {Module} module
      */
-    getContainer() {
-        return this.container;
+    private loadModule(module:Module) {
+
+        /**
+         * Load entry point module
+         */
+        if (module.getWebComponentEntryPointName() && customElements && customElements.get(module.getWebComponentEntryPointName()) === undefined) {
+
+          //  require(`${this.getModulePath()}/${module.getName()}/${module.getWebComponentEntryPointNameFile()}`);
+            import(`${this.getModulePath()}${module.getName()}${this.getSlash()}${module.getWebComponentEntryPointNameFile()}`)
+                .then((module) => {
+                    // lazyModule has all of the proper types, autocomplete works,
+                    // type checking works, code references work \o/
+
+                    console.log("TypeScript >= 2.4.0 Dynamic Import Expression:", module);
+
+                })
+                .catch((err) => {
+                    console.log("Failed to load moment", err);
+                });
+        }
+    }
+
+    /**
+     * @return {string}
+     */
+    public getBasePath() {
+        return this.basePath;
     }
 
     /**
@@ -93,6 +139,38 @@ export class Application implements EventManagerAwareInterface, ContainerAwareIn
      */
     public setResourcePath(resourcePath: string) {
         this.resourcePath = resourcePath;
+        return this;
+    }
+
+    /**
+     * @return {string}
+     */
+    public getModulePath() {
+        return this.modulePath;
+    }
+
+    /**
+     * @param {string} modulePath
+     * @return {Application}
+     */
+    public setModulePath(modulePath: string) {
+        this.modulePath = modulePath;
+        return this;
+    }
+
+    /**
+     * @return {string}
+     */
+    public getSlash() {
+        return this.slash;
+    }
+
+    /**
+     * @param {string} slash
+     * @return {Application}
+     */
+    public setSlash(slash: string) {
+        this.slash = slash;
         return this;
     }
 
@@ -146,21 +224,4 @@ export class Application implements EventManagerAwareInterface, ContainerAwareIn
     public getEventManager() {
         return this.eventManager;
     }
-
-    /**
-     * @param {string} container
-     * @return this
-     */
-    setContainer(container:ContainerInterface) {
-        this.container = container;
-        return this;
-    }
-
-    /**
-     * @return {string}
-     */
-    public getBasePath() {
-        return this.basePath;
-    }
-
 }

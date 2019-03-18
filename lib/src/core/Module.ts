@@ -1,8 +1,6 @@
 /**
  *  Module
  */
-
-
 export class Module {
 
     /**
@@ -23,7 +21,12 @@ export class Module {
     /**
      * @type string
      */
-    private nameWc: string = '';
+    private webComponentEntryPointName: string = '';
+
+    /**
+     * @type {string}
+     */
+    private webComponentEntryPointNameFile: string = '';
 
     /**
      * @type string
@@ -80,11 +83,43 @@ export class Module {
     }
 
     /**
-     * @param {string} name
+     * @param {string} icon
      * @return {Module}
      */
     public setIcon(icon: string) {
         this.icon = icon;
+        return this;
+    }
+
+    /**
+     * @return {string}
+     */
+    public getWebComponentEntryPointName() {
+        return this.webComponentEntryPointName;
+    }
+
+    /**
+     * @param {string} webComponentEntryPointName
+     * @return {Module}
+     */
+    public setWebComponentEntryPointName(webComponentEntryPointName: string) {
+        this.webComponentEntryPointName = webComponentEntryPointName;
+        return this;
+    }
+
+    /**
+     * @return {string}
+     */
+    public getWebComponentEntryPointNameFile() {
+        return this.webComponentEntryPointNameFile;
+    }
+
+    /**
+     * @param {string} webComponentEntryPointNameFile
+     * @return {Module}
+     */
+    public setWebComponentEntryPointNameFile(webComponentEntryPointNameFile: string) {
+        this.webComponentEntryPointNameFile = webComponentEntryPointNameFile;
         return this;
     }
 }

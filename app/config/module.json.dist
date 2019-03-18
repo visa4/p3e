@@ -1,0 +1,18 @@
+[
+  {
+    "title" : "Home",
+    "name": "home",
+    "icon" : "icons:apps",
+    "webComponentEntryPointName" : "welcome-element",
+    "webComponentEntryPointNameFile" : "welcome-element.js"
+  },
+  {
+    "title" : "Help",
+    "name": "help",
+    "icon" : "icons:help",
+    "webComponentEntryPointName" : "demo-element",
+    "webComponentEntryPointNameFile" : "demo-element.js"
+  }
+]
+
+

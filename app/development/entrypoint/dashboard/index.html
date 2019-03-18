@@ -8,63 +8,13 @@
     <script>
         require('@babel/register')({
             presets: ['@babel/preset-env'],
+            plugins: ["@babel/plugin-syntax-dynamic-import"],
             ignore: []
         });
         require('./import.js')
     </script>
 </head>
 <body>
-    <dom-bind>
-        <template>
-            <p3e-layout>
-                <app-header-layout fullbleed>
-                    <app-header reveals>
-                        <app-toolbar>
-                            <div main-title>P3E</div>
-                            <paper-icon-button id="buttonDrawer" icon="icons:account-circle" on-click="_tapDrawer"></paper-icon-button>
-                        </app-toolbar>
-                    </app-header>
-                    <div class="layout-container layout-horizontal">
-                        <div class="layout-vertical layout-center-aligned layout-menu">
-                            <dom-repeat id="menu" items="{{modules}}" as="module">
-                                <template>
-                                    <paper-icon-button id="{{module.name}}" icon="{{module.icon}}" tab-index="{{index}}" on-tap="tapMenu"></paper-icon-button>
-                                    <paper-tooltip for="{{module.name}}" position="right">{{module.name}}</paper-tooltip>
-                                </template>
-                            </dom-repeat>
-                        </div>
-                        <div class="layout-vertical layout-flex-auto layout-content">
-                            <iron-pages id="pages" selected="0">
-                                <dom-repeat id="entryPointModule" items="{{modules}}" as="module">
-                                    <template>
-                                        <div>{{module.name}}</div>
-                                    </template>
-                                </dom-repeat>
-                            </iron-pages>
-                        </div>
-                    </div>
-                </app-header-layout>
-                <app-drawer id="settingDrawer" align="right" swipe-open>
-                    <div class="avatar-image">
-                        <iron-icon icon="icons:account-circle"></iron-icon>
-                    </div>
-                    <div class="avatar-name">Mario rossi</div>
-                </app-drawer>
-            </p3e-layout>
-        </template>
-    </dom-bind>
-    <script>
-        let appBind = document.querySelector('dom-bind');
-        // set data property on dom-bind
-        appBind._tapDrawer = () => {
-            document.querySelector('#settingDrawer').open();
-        };
-
-        appBind.modules = application.getModules();
-
-        appBind.tapMenu = (evt) => {
-            appBind.$.pages.selected = evt.target.tabIndex;
-        }
-    </script>
+    <p3e-layout services="Application"></p3e-layout>
 </body>
 </html>

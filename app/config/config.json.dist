@@ -1,1 +1,9 @@
-{}
+{
+  "localize": {
+    "defaultLanguage" : "it",
+    "languages" : [
+      "it",
+      "en"
+    ]
+  }
+}

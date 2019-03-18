@@ -5,7 +5,7 @@ import {EventManagerAwareInterface} from "./EventManagerAwareInterface";
 /**
  * EventManagerAware
  */
-export class EventManagerAware implements EventManagerAwareInterface{
+export class EventManagerAware implements EventManagerAwareInterface {
 
     /**
      * @type {EventManager}

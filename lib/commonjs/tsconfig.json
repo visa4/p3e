@@ -6,7 +6,9 @@
     "rootDir" : "../src"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/index.ts",
+    "../src/**/index.ts"
   ],
   "include": [
     "../src/**/*"

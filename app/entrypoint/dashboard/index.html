@@ -2,48 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="manifest" href="manifest.json">
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script type="module" src="style/app-style.js" crossorigin></script>
-    <script type="module" src="../node_modules/@polymer/iron-icons/iron-icons.js" crossorigin></script>
-    <script type="module" src="elements/layout/p3e-layout.js" crossorigin></script>
-    <script type="module" src="elements/demo-elements/demo-elements.js" crossorigin></script>
+    <link rel="manifest" href="../../manifest.json">
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module" src="../../style/app-style.js" crossorigin></script>
+    <script type="module" src="src/dashboard.js" crossorigin></script>
+    <script type="module" src="../../elements/layout/p3e-layout.js" crossorigin></script>
 </head>
 <body>
-    <dom-bind>
-        <template>
-            <p3e-layout>
-                <app-header-layout fullbleed>
-                    <app-header reveals>
-                        <app-toolbar>
-                            <div main-title>P3E</div>
-                            <paper-icon-button id="buttonDrawer" icon="icons:account-circle" on-click="_tapDrawer"></paper-icon-button>
-                        </app-toolbar>
-                    </app-header>
-                    <div class="layout-container layout-horizontal">
-                        <div class="layout-vertical layout-center-aligned layout-menu">
-                            <paper-icon-button icon="icons:apps"></paper-icon-button>
-                        </div>
-                        <div class="layout-vertical layout-flex-auto layout-content">
-                            <demo-elements></demo-elements>
-                        </div>
-                    </div>
-                </app-header-layout>
-                <app-drawer id="settingDrawer" align="right" swipe-open>
-                    <div class="avatar-image">
-                        <iron-icon icon="icons:account-circle"></iron-icon>
-                    </div>
-                    <div class="avatar-name">Mario rossi</div>
-                </app-drawer>
-            </p3e-layout>
-        </template>
-    </dom-bind>
-    <script>
-        let appBind = document.querySelector('dom-bind');
-        // set data property on dom-bind
-        appBind._tapDrawer = () => {
-            document.querySelector('#settingDrawer').open();
-        };
-    </script>
+    <p3e-layout></p3e-layout>
 </body>
 </html>

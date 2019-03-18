@@ -30,7 +30,7 @@ import '@webcomponents/webcomponentsjs/';
  * @customElement
  * @polymer
  */
-class DemoElements extends PolymerElement {
+class DemoElement extends PolymerElement {
 
     tapToast(evt) {
         this.openToad = !this.openToad;
@@ -261,4 +261,4 @@ class DemoElements extends PolymerElement {
     }
 }
 
-window.customElements.define('demo-elements', DemoElements);
+window.customElements.define('demo-element', DemoElement);

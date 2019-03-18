@@ -52,6 +52,7 @@ const template = html`
             --paper-input-container-input-color: var(--primary-text-color);
       
             --menu-width: 56px;
+            --menu-min-width : 56px;
             --content-padding: 8px;
             
             /**********************************************************
@@ -97,6 +98,18 @@ const template = html`
             --paper-listbox: {}
             
             --paper-fab: {}
+            
+            --app-toolbar: {
+                background: var(--default-primary-color);
+                background-color: var(--default-primary-color);
+                color: var(--text-primary-color);
+            }
+            
+             --app-toolbar: {
+                background: var(--default-primary-color);
+                background-color: var(--default-primary-color);
+                color: var(--text-primary-color);
+            }
          }
 
         /*******************************************
@@ -111,72 +124,6 @@ const template = html`
             font-family: 'Roboto', 'Noto', sans-serif;
             color: var(--primary-text-color);
         }
-
-        app-toolbar {
-            background-color: var(--default-primary-color);
-            color: var(--text-primary-color);
-        }
-        
-        app-drawer .avatar-image {
-            height: 256px;
-            padding: 0 8px;
-        }
-        
-        app-drawer .avatar-image iron-icon {
-            --iron-icon-width : 240px;
-            --iron-icon-height : 256px;
-        }
-        
-        app-drawer .avatar-name {
-            font-style: italic;
-            font-size: 20px;
-            padding: 0 8px;
-            text-align: center;
-            color: var(--secondary-text-color);
-        }
-       
-
-        /*******************************************
-                    FLEX LAYOUT
-         *******************************************/
-
-        .layout {
-            @apply --layout;
-        }
-
-        .layout-horizontal {
-            @apply --layout-horizontal;
-        }
-
-        .layout-vertical {
-            @apply --layout-vertical;
-        }
-
-        .layout-flex-auto {
-            @apply  --layout-flex-auto;
-        }
-
-        .layout-menu {
-            width: var(--menu-width);
-            border-right: var(--divider-color) solid 1px;
-        }
-
-        .layout-center-aligned {
-            @apply  --layout-center;
-        }
-
-        .layout-center-justified {
-            @apply --layout-center-justified;
-        }
-
-        .layout-container {
-            height: 100%;
-        }
-        
-        .layout-content {
-            padding: var(--content-padding);
-        }
-      
     </style>
 </custom-style>`;
 
