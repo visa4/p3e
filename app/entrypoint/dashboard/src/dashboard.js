@@ -30,7 +30,7 @@ const config =  JSON.parse(
 container.set('Config', config);
 
 /***********************************************************************************************************************
-                                                LOCALIZE SERVICE
+                                              LOCALIZE SERVICE
  ***********************************************************************************************************************/
 container.set('Localize', new Localize(
     config.localize.defaultLanguage,
@@ -38,7 +38,12 @@ container.set('Localize', new Localize(
 ));
 
 /***********************************************************************************************************************
-                                            APPLICATION SERVICE
+                                                TEST SERVICE
+ **********************************************************************************************************************/
+container.set('Test', {'name': 'test'});
+
+/***********************************************************************************************************************
+                                             APPLICATION SERVICE
  **********************************************************************************************************************/
 let modules = JSON.parse(fs.readFileSync(`${basePath}config${slash}module.json`).toString());
 // TODO refactor after the introduction of the hydrator module
@@ -60,7 +65,6 @@ application.setBasePath(basePath)
     .loadModules(modulesHydrate, container);
 
 container.set('Application', application);
-
 
 /**
  * Load application in global scope

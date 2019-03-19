@@ -114,7 +114,6 @@ class P3ELayout extends P3ELocalizeElement {
                 this.modules = service.getModules();
             });
         }
-
     }
 
     /**

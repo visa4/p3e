@@ -8,7 +8,7 @@ const template = html`
     
     
      :root {
-            
+            /**
             --dark-primary-color:       #E64A19;
             --default-primary-color:    #FF5722;
             --light-primary-color:      #FFCCBC;
@@ -26,8 +26,8 @@ const template = html`
     
             --paper-menu-background-color: #fff;
             --menu-link-color:             #111111;
-    
-            /*          
+            */
+               
             --dark-primary-color:       #5D4037;
             --default-primary-color:    #795548;
             --light-primary-color:      #D7CCC8;
@@ -45,7 +45,6 @@ const template = html`
 
             --paper-menu-background-color: #fff;
             --menu-link-color:             #111111;
-            */
             
             --paper-input-container-color:       var(--primary-text-color);
             --paper-input-container-focus-color: var(--secondary-text-color)
