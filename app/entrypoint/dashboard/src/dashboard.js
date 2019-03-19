@@ -1,7 +1,7 @@
-import {Application} from '../../../../lib/es6/core/Application'
-import {Module} from '../../../../lib/es6/core/Module'
-import {Container} from "../../../../lib/es6/container/Container";
-import {Localize} from "../../../../lib/es6/language/Localize";
+import {Application} from '@p3e/library/src/core/Application';
+import {Module} from '@p3e/library/src/core/module/Module';
+import {Container} from  '@p3e/library/src/container/Container';
+import {Localize} from '@p3e/library/src/localize/Localize';
 
 process.env.APP_ENVIRONMENT = process.env.APP_ENVIRONMENT === undefined ? 'production' : process.env.APP_ENVIRONMENT;
 
@@ -13,7 +13,6 @@ const slash = window.navigator.appVersion.indexOf('Win') != -1 ? '\\' : '/';
 const basePath = path.normalize(`${__dirname}${back}`);
 const modulePath = path.normalize(`${__dirname}${back}module${slash}`);
 const resourcePath = path.normalize(`${__dirname}${back}storage${slash}`);
-process.env.APP_ENVIRONMENT = process.env.APP_ENVIRONMENT === undefined ? 'production' : process.env.APP_ENVIRONMENT;
 
 /**
  * Container service of application
@@ -52,9 +51,13 @@ for (let cont = 0; modules.length > cont; cont++) {
     modulesHydrate.push(module);
 }
 
-const application = new Application(modulesHydrate, basePath, modulePath, slash);
+const application = new Application();
 
-application.setResourcePath(resourcePath);
+application.setBasePath(basePath)
+    .setModulePath(modulePath)
+    .setResourcePath(resourcePath)
+    .setSlash(slash)
+    .loadModules(modulesHydrate, container);
 
 container.set('Application', application);
 

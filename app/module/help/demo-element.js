@@ -32,6 +32,35 @@ import '@webcomponents/webcomponentsjs/';
  */
 class DemoElement extends PolymerElement {
 
+
+    static get properties() {
+        return {
+            /**
+             * `autoValidate` Set to true to auto-validate the input value.
+             */
+            players: {
+                type: Array,
+                value:  [
+                    {
+                        numberShirt: 35,
+                        name: 'KD',
+                        text: 'vaffamoc'
+                    },
+                    {
+                        numberShirt: 30,
+                        name: 'Curry',
+                        text: 'giusto'
+                    },
+                    {
+                        numberShirt: 11,
+                        name: 'Culo',
+                        text: 'fatti due domande'
+                    }
+                ]
+            },
+        };
+    }
+
     tapToast(evt) {
         this.openToad = !this.openToad;
     }

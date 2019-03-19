@@ -1,8 +1,8 @@
 import {P3EServiceInjectorElement} from '../service/p3e-service-injector';
 import {AppLocalizeBehavior} from '@polymer/app-localize-behavior/app-localize-behavior.js';
 import {mixinBehaviors} from '@polymer/polymer/lib/legacy/class.js';
-import {Localize} from '../../../lib/es6/language/Localize';
-import {Listener} from '../../../lib/es6/event/Listener';
+import {Localize} from '@p3e/library/src/localize/Localize';
+import {Listener} from '@p3e/library/src/event/Listener';
 
 /**
  * @customElement
@@ -23,9 +23,11 @@ export class P3ELocalizeElement extends mixinBehaviors([AppLocalizeBehavior], P3
     ready() {
         super.ready();
 
-        container.get('Localize').then(function (service) {
-            this._setLocalizeService(service)
-        }.bind(this));
+        if (window.container) {
+            window.container.get('Localize').then(function (service) {
+                this._setLocalizeService(service)
+            }.bind(this));
+        }
     }
 
     /**

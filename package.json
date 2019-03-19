@@ -7,14 +7,14 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "@babel/core": "^7.3.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@types/source-map": "^0.5.2",
+    "@types/source-map": "^0.5.7",
     "devtron": "^1.4.0",
     "electron": "4.0.5",
-    "electron-builder": "~20.39.1",
-    "polymer-cli": "^1.6.0",
+    "electron-builder": "~20.39.0",
+    "polymer-cli": "^1.9.7",
     "typescript": "^3.3.3333",
     "wct-browser-legacy": "^1.0.0"
   },
@@ -31,6 +31,7 @@
     "tsc-es6": "tsc  -p lib/es6"
   },
   "dependencies": {
+    "@p3e/library": "git+https://github.com/visa4/p3e-library.git",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.1",
     "@polymer/app-media": "^3.0.1",

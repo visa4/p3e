@@ -9,36 +9,23 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
 
-    <script type="module" src="../app/elements/my-element/my-element.js"></script>
+    <script type="module" src="../app/elements/layout/p3e-layout.js"></script>
   </head>
   <body>
 
     <test-fixture id="Init">
       <template>
-        <my-element></my-element>
-      </template>
-    </test-fixture>
-
-    <test-fixture id="ChangedProperty">
-      <template>
-        <my-element prop1="new-prop1"></my-element>
+        <p3e-layout></p3e-layout>
       </template>
     </test-fixture>
 
     <script>
-      suite('my-element-test-suite', function() {
+      suite('p3e-layout-test-suite', function() {
 
         test('init', function() {
           var element = fixture('Init');
-          assert.equal(element.prop1, 'Good component');
+          assert.isObject(element.resources);
         });
-
-        test('change property', function() {
-          // Create a test fixture
-          var element = fixture('ChangedProperty');
-          assert.equal(element.prop1, 'new-prop1');
-        });
-
       });
     </script>
   </body>
