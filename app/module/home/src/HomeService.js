@@ -1,6 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Container_1 = require("@p3e/library/src/container/Container");
-class HomeService extends Container_1.Container {
+/**
+ *
+ */
+class HomeService extends require("@p3e/library").container.Container {
+
 }
-exports.HomeService = HomeService;
+
+module.exports = HomeService;

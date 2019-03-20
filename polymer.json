@@ -15,7 +15,8 @@
     "app/config/**",
     "!app/config/config.json.dist",
     "app/main.js",
-    "node_modules/@polymer/**/*.js"
+    "node_modules/@polymer/**/*.js",
+    "node_modules/@p3e/**/*.*"
   ],
   "extraDependencies": [
     "package.json",
@@ -36,8 +37,7 @@
       },
       "html": {
         "minify": false
-      },
-      "bundle": false
+      }
     }
   ],
   "moduleResolution": "node"
