@@ -24,9 +24,7 @@ export class P3ELocalizeElement extends mixinBehaviors([AppLocalizeBehavior], P3
         super.ready();
 
         if (window.container) {
-            window.container.get('Localize').then(function (service) {
-                this._setLocalizeService(service)
-            }.bind(this));
+            this._setLocalizeService(window.container.get('Localize'))
         }
     }
 

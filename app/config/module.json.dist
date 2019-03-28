@@ -3,15 +3,25 @@
     "title" : "Home",
     "name": "home",
     "icon" : "icons:apps",
-    "webComponentEntryPointName" : "welcome-element",
-    "webComponentEntryPointNameFile" : "welcome-element.js"
+    "webComponentEntryPointName" : "welcome-index",
+    "webComponentEntryPointNameFile" : "index.js",
+    "configEntryPoint": "config.js",
+    "autoloads" : [
+      "src/HomeService.js",
+        "src/entity/HomeEntity.js"
+    ]
   },
   {
     "title" : "Help",
     "name": "help",
     "icon" : "icons:help",
     "webComponentEntryPointName" : "demo-element",
-    "webComponentEntryPointNameFile" : "demo-element.js"
+    "webComponentEntryPointNameFile" : "demo-element.js",
+    "configEntryPoint": "config.js",
+    "autoloads" : [
+        "src/HelpService.js",
+        "src/entity/HelpEntity.js"
+    ]
   }
 ]
 

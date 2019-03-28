@@ -110,9 +110,7 @@ class P3ELayout extends P3ELocalizeElement {
         super.ready();
 
         if (window.container) {
-            window.container.get('Application').then((service) => {
-                this.modules = service.getModules();
-            });
+            this.modules = window.container.get('Application').getModules();
         }
     }
 

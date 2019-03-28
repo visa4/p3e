@@ -5,5 +5,12 @@
       "it",
       "en"
     ]
+  },
+  "storage" : {
+     "adapter" : {
+        "dexie" : {
+            "nameDb" : "test"
+        }
+     }
   }
 }
